@@ -1,0 +1,36 @@
+.footer{
+    width: 100%;
+    height: 200px;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.footer svg{
+    margin-left: 200px;
+}
+
+
+
+/* li::after{
+    content:'\00B7';
+    padding-right:10px;
+    color:white;
+} */
+
+#dinner::after{
+    content: '';
+}
+
+.footer span{
+    font-size: 13px;
+    width: 115px;
+    margin-right: 200px;
+}
+
+/* .footer ul{
+    margin: 0px;
+} */
