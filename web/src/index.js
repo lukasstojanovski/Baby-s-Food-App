@@ -8,6 +8,8 @@ import { Dinner } from "./components/Dinner";
 import { Brunch } from "./components/Brunch";
 import { Lunch } from "./components/Lunch";
 import { Register } from "./components/Register";
+import { Nav } from "./components/Nav";
+import { Footer } from "./components/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -16,7 +18,7 @@ root.render(
   <Router>
     <Routes>
       <Route path="/" element={<App/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/login" element={<Nav/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/breakfast" element={<Breakfast/>}/>
         <Route path="/brunch" element={<Brunch/>}/>

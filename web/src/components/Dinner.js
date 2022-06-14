@@ -3,6 +3,7 @@ import { Nav } from "./Nav";
 import "../css/blogposts.css"
 import {ReactComponent as PlateIcon} from "../photos/Archive (1)/icon_plate.svg"
 import {ReactComponent as TimeIcon} from "../photos/Archive (1)/icon_plate.svg"
+import { Footer } from "./Footer";
 
 export const Dinner = () => {
     
@@ -30,6 +31,7 @@ export const Dinner = () => {
     const breakfast = posts.filter(post => post.type === "Dinner")
 
     return (
+        <div>
         <main>
         <div >
             <Nav/>
@@ -82,5 +84,7 @@ export const Dinner = () => {
                  :null}
         </div>
         </main>
+        <Footer/>
+        </div>
     )
 };

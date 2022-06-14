@@ -3,12 +3,15 @@ import { Nav } from "./Nav";
 import "../css/blogposts.css"
 import {ReactComponent as PlateIcon} from "../photos/Archive (1)/icon_plate.svg"
 import {ReactComponent as TimeIcon} from "../photos/Archive (1)/icon_plate.svg"
+import { useLocation } from "react-router-dom";
+import { Footer } from "./Footer";
 
 export const Breakfast = () => {
     
     const [posts, setPosts] = useState([]);
     const [show, setShow] = useState(false)
     const [selectedPost, setSelectedPost] = useState("")
+    const location = useLocation()
 
     const getPosts = async () => {
         try {
@@ -25,11 +28,13 @@ export const Breakfast = () => {
 
     useEffect(()=>{
         getPosts()
+        
     },[])
 
     const breakfast = posts.filter(post => post.type === "Breakfast")
 
     return (
+        <div>
         <main>
             <Nav/>
             <h1>Breakfast</h1>
@@ -80,5 +85,7 @@ export const Breakfast = () => {
                 </div>
                  :null}
         </main>
+        <Footer/>
+        </div>
     )
 };

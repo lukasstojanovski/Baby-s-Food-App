@@ -1,5 +1,8 @@
-import React, {useState, useEffect} from "react";
-import { Nav } from "./Nav";
+import React, { useState} from "react";
+import { useNavigate } from "react-router-dom";
+import "../css/login.css"
+import { Footer } from "./Footer";
+
 
 export const Login = () => {
 
@@ -9,24 +12,14 @@ export const Login = () => {
     }
 
     const [formData, setFormData] = useState(formDataInit);
-    const [loggedIn, setLoggedIn] = useState(false);
 
-    const token = localStorage.getItem('jwt');
+    let navigate = useNavigate();
 
-    useEffect(()=>{
-        if(token === null) {
-            setLoggedIn(false)
-        }
-        if(token) {
-            setLoggedIn(true)
-        }
-        console.log(token)
-    },[])
 
     const submit = async (e) => {
         e.preventDefault();
         console.log(formData);
-        try{
+        try {
             let res = await fetch('/api/v1/auth/login', {
                 method: 'POST',
                 body: JSON.stringify(formData),
@@ -34,26 +27,17 @@ export const Login = () => {
                     'content-type': 'application/json'
                 }
             });
-            if(!res.ok) {
+            if (!res.ok) {
                 throw 'Error Logging in';
             }
             let data = await res.json();
             localStorage.setItem('jwt', data.token);
-            if(data.token){
-                setLoggedIn(true)
-            }
-        }catch(err) {
+            navigate('/')
+        } catch (err) {
             alert(err);
         }
-    };  
+    };
 
-    
-    const removeToken = () => {
-        localStorage.setItem('jwt', null)
-        setLoggedIn(false)
-        
-    }
-    
     const inputChange = (e) => {
         setFormData({
             ...formData,
@@ -61,31 +45,39 @@ export const Login = () => {
         })
     }
 
-    return(
+    return (
         <div>
-            <Nav/>
-                {loggedIn === false ? 
-            <form onSubmit={submit}>
-            <label>
-            <span>Username (email)</span>
-            <input type="email" name="email" value={formData.email} onChange={inputChange}/>
-            </label>
-            <br/>
-            <label>
-                <span>Password</span>
-                <input type="password" name="password" value={formData.password} onChange={inputChange}/>
-            </label>
-            <br/>
-            <button type="submit" >Log in</button>
+        <main className="login-page">
+            <h1>Login</h1>
 
-                </form> 
+            <div className="login-form">
 
-                :
-                <div>
-                <h1>Logged in</h1> 
-                <button onClick={removeToken}>Log Out</button>
+                <div className="welcome-login">
+                    <h4 className="welcome">Welcome to <h4 className="welcome-baby">Baby's</h4></h4>
+                        <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
+                         making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, 
+                         combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. 
+                         The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic 
+                         words etc.</p>
                 </div>
-            }
+
+                <form onSubmit={submit}>
+                    <label>
+                        <span className="email-password">Email</span>
+                        <input className="email-password-input" type="email" name="email" value={formData.email} onChange={inputChange} />
+                    </label>
+                    <br />
+                    <label>
+                        <span className="email-password">Password</span>
+                        <input className="email-password-input" type="password" name="password" value={formData.password} onChange={inputChange} />
+                    </label>
+                    <br />
+                    <button className="sign-in-button" type="submit"><span>LOG IN</span></button>
+                </form>
+
+            </div>
+        </main>
+        <Footer/>
         </div>
     )
 }

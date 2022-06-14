@@ -3,7 +3,7 @@ const { Validator } = require('node-input-validator');
 const Account = {
     email: 'required|string',
     password: 'required|string',
-    full_name: 'required|string',
+    name: 'required|string',
 };
 
 const AccountLogin = {

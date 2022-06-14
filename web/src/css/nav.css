@@ -1,10 +1,10 @@
 .type-of-foods{
     display: flex;
     justify-content: center;
-    gap: 50px;
+
 }
 
-ul{
+.header-links{
     display: flex;
     justify-content: space-around;   
     font-weight: bold;
@@ -15,16 +15,16 @@ ul{
     margin: auto;
     margin-top: 50px;
     margin-bottom: 100px;
-
-}
-li{
-    text-align: center;
 }
 
-.type-of-foods li a{
-    display: flex;
-    justify-content: center;
+.type-of-foods li::after{
+    content:'\00B7';
+    padding-right:10px;
+    color: #F0972A;
+    padding-left: 10px;
+    font-size: 50px;
 }
+
 
 .type-of-foods li button{
     border: none;
@@ -49,6 +49,7 @@ a:-webkit-any-link {
     border-radius: 5px;
     opacity: 1;
     border-style: solid;
+    align-items: center;
 }
 
 .login span{
@@ -60,11 +61,8 @@ a:-webkit-any-link {
     border-color: #A5A5A5;
     border-radius: 5px;
     background-color: #96BB36;
-    
-}
-
-.register {
     color: white;
+    
 }
 
 .buttons a button{
@@ -73,7 +71,7 @@ a:-webkit-any-link {
     font-weight: bold;
     margin: 0px;
     justify-content: center;
-
+    
 }
 
 .buttons a button span{
@@ -92,6 +90,7 @@ img{
 
 .buttons{
     width: auto;
+    
     display: flex;
     justify-content: space-around;
 }
@@ -100,4 +99,8 @@ img{
     display: flex;
 }
 
+li{
+    display: flex;
+    align-items: center;
+}
 
