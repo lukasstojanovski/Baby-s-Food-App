@@ -1,13 +1,27 @@
 .type-of-foods{
     display: flex;
     justify-content: center;
+}
 
+.my-recipes{
+    color: #96BB36;
+    text-decoration: underline;
+}
+
+.my-profile{
+    text-decoration: underline;
+    color: #F0972A;
+}
+
+.log-out-btn{
+    color: #A5A5A5;
+    text-decoration: underline;
 }
 
 .header-links{
     display: flex;
     justify-content: space-around;   
-    font-weight: bold;
+    font-weight: 600;
     height: 40px;
     text-transform: uppercase;
     align-items: center ;
@@ -15,7 +29,15 @@
     margin: auto;
     margin-top: 50px;
     margin-bottom: 100px;
+    font-size: 15px;
+    text-decoration: none;
 }
+
+.logged-in-links{
+    font-size: 18px;
+}
+
+
 
 .type-of-foods li::after{
     content:'\00B7';
@@ -38,9 +60,7 @@ button{
 }
 
 a:-webkit-any-link {
-    color: #A5A5A5;
     cursor: pointer;
-    text-decoration: none;
 }
 
 .login{
@@ -61,8 +81,7 @@ a:-webkit-any-link {
     border-color: #A5A5A5;
     border-radius: 5px;
     background-color: #96BB36;
-    color: white;
-    
+    color: white; 
 }
 
 .buttons a button{
@@ -103,4 +122,15 @@ li{
     display: flex;
     align-items: center;
 }
+
+.foods-links{
+    text-decoration: none;
+    color: #A5A5A5;
+}
+
+.nav-btns{
+    text-decoration: none;
+}
+
+
 

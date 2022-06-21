@@ -27,12 +27,15 @@ const getSingle = async (req, res) => {
     }
 }
 
+const date = new Date()
+
 const create = async (req, res) => {
     try{
         await validate(req.body, Post);
         let data = {
             ...req.body,
-            user_id: req.user_id
+            user_id: req.user_id,
+            publishDate: `${date.getMonth() +1 }/${date.getDate()}/${date.getFullYear()}`
         };
         let ps = await posts.create(data);
         return res.status(201).send(ps);

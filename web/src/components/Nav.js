@@ -36,18 +36,26 @@ export const Nav = () => {
 </Link></li>
 
             <div className='type-of-foods'>
-            <li><Link id='breakfast' to="/breakfast" >Breakfast</Link></li>
-            <li><Link id='brunch' to="/brunch">Brunch</Link></li>
-            <li><Link id='lunch' to="/lunch">Lunch</Link></li>
-            <li><Link id='dinner' to="/dinner">Dinner</Link></li>
+            <li><Link id='breakfast' className='foods-links' to="/breakfast" >Breakfast</Link></li>
+            <li><Link id='brunch' className='foods-links' to="/brunch">Brunch</Link></li>
+            <li><Link id='lunch' className='foods-links' to="/lunch">Lunch</Link></li>
+            <li><Link id='dinner' className='foods-links' to="/dinner">Dinner</Link></li>
             </div>
 
             
-            {token ? <button onClick={removeToken}><Link to='/'>log Out</Link></button> : 
+            {token ? 
+            <ul className='logged-in-links'>
+                <div className='type-of-foods'>
+                <li><Link className='my-recipes' to='/my-recipes'>My recipes</Link></li>
+                <li><Link className='my-profile' to='/'>My profile</Link></li>
+                <li onClick={removeToken}><Link className='log-out-btn' to='/login'>Log out</Link></li>
+                </div>
+            </ul>
+            : 
             <div className='buttons'>
-            <Link to="/login"><button className='login'><span>Login</span></button></Link>
+            <Link className='nav-btns' to="/login"><button className='login'><span>Login</span></button></Link>
             <span className='or'>or</span>
-            <Link to="/register"><button className='register'><span>Create account</span></button></Link>
+            <Link className='nav-btns' to="/register"><button className='register'><span>Create account</span></button></Link>
             </div>
             }
             

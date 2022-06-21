@@ -18,6 +18,7 @@
     margin: auto;
     display: flex;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
 .footer-links li a{

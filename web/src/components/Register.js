@@ -28,7 +28,7 @@ export const Register = () => {
             }
             result = await result.json()
             localStorage.setItem("user-info", result)
-            navigate('/login')
+            navigate('/')
         }catch (err) {
             alert(err)
         }

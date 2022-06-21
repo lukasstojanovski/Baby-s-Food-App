@@ -16,6 +16,7 @@ export const Blogposts = () => {
             });
             let data = await res.json();
             console.log(data)
+            console.log(data.publishDate)
             setPosts(data);
         } catch (err) {
             console.log(err);
@@ -44,7 +45,9 @@ export const Blogposts = () => {
                             <p className="type">{post.type}</p>
                             <div className="aboute-food">
                             <h2>{post.title}</h2>
-                            <p>{post.content.slice(0, 344)}</p>
+                            <div className="content-in-card">
+                            <p>{post.shortDescription.slice(0, 344)}</p>
+                            </div>
                             <div className="info">
                             <TimeIcon/><p>{post.time}min</p>
                             <PlateIcon/><p>{post.people}</p>
@@ -61,7 +64,7 @@ export const Blogposts = () => {
                             <p className="type">{post.type}</p>
                             <div className="aboute-food">
                             <h2>{post.title}</h2>
-                            <p>{post.content.slice(0, 305)}</p>
+                            <p>{post.shortDescription.slice(0, 305)}</p>
                             <div className="info">
                             <TimeIcon/><p>{post.time}min</p>
                             <PlateIcon/><p>{post.people}</p>

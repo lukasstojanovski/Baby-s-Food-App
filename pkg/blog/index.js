@@ -5,13 +5,15 @@ const Posts = mongoose.model(
     'posts',
     {
         user_id: String,
+        publishDate: String,
         title: String,
         photo: String,
         content: String,
         bestServed: String,
         type: String,
         time: Number,
-        people: Number
+        people: Number,
+        shortDescription: String
     },
     "posts"
 )

@@ -7,7 +7,8 @@ const Post = {
     type: "required|string",
     time: "required|string",
     people: "required|string",
-    bestServed: "required|string"
+    bestServed: "required|string",
+    shortDescription: "required|string"
 };
 
 const PostPartial = {

@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
 import { App } from './components/App';
-import { Login } from "./components/Login";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Breakfast } from "./components/Breakfast";
 import { Dinner } from "./components/Dinner";
@@ -9,7 +8,8 @@ import { Brunch } from "./components/Brunch";
 import { Lunch } from "./components/Lunch";
 import { Register } from "./components/Register";
 import { Nav } from "./components/Nav";
-import { Footer } from "./components/Footer";
+import { Myrecipes } from "./components/Myrecipes";
+import { CreatePost } from "./components/CreatePost";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -24,6 +24,9 @@ root.render(
         <Route path="/brunch" element={<Brunch/>}/>
         <Route path="/lunch" element={<Lunch/>}/>
         <Route path="/dinner" element={<Dinner/>}/>
+        <Route path="/my-recipes" element={<Myrecipes/>}/>
+        <Route path="/create-post" element={<CreatePost/>}/>
+        
     </Routes>
   </Router>
   </div>
