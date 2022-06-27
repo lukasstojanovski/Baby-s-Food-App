@@ -50,7 +50,7 @@ export const Login = () => {
         <main className="login-page">
             <h1>Login</h1>
 
-            <div className="login-form">
+            <div className="login-div">
 
                 <div className="welcome-login">
                     <h4 className="welcome">Welcome to <h4 className="welcome-baby">Baby's</h4></h4>
@@ -61,7 +61,7 @@ export const Login = () => {
                          words etc.</p>
                 </div>
 
-                <form onSubmit={submit}>
+                <form className="login-form" onSubmit={submit}>
                     <label>
                         <span className="email-password">Email</span>
                         <input className="email-password-input" type="email" name="email" value={formData.email} onChange={inputChange} />

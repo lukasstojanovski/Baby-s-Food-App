@@ -17,7 +17,11 @@ export const Myrecipes = () => {
     
     async function deletePost(id) {
         let res = await fetch('/api/v1/blog/'+id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'Accept': 'application/json',
+                authorization: `bearer ${localStorage.getItem("jwt")}`}
         })
         res = await res.json()
         getPosts();
@@ -27,7 +31,11 @@ export const Myrecipes = () => {
     const getPosts = async () => {
         try {
             let res = await fetch('/api/v1/blog', {
-                method: 'GET'
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'Accept': 'application/json',
+                    authorization: `bearer ${localStorage.getItem("jwt")}`}
             });
             let data = await res.json();
             setPosts(data);

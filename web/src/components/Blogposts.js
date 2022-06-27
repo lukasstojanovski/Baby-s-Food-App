@@ -11,8 +11,11 @@ export const Blogposts = () => {
 
     const getPosts = async () => {
         try {
-            let res = await fetch('/api/v1/blog', {
-                method: 'GET'
+            let res = await fetch('/api/v1/blog/all', {
+                method: 'GET',
+                headers: {
+                    "content-type": "application/json"
+                }
             });
             let data = await res.json();
             console.log(data)
@@ -45,9 +48,7 @@ export const Blogposts = () => {
                             <p className="type">{post.type}</p>
                             <div className="aboute-food">
                             <h2>{post.title}</h2>
-                            <div className="content-in-card">
-                            <p>{post.shortDescription.slice(0, 344)}</p>
-                            </div>
+                            <p className="card-short-description">{post.shortDescription.slice(0, 305)}</p>
                             <div className="info">
                             <TimeIcon/><p>{post.time}min</p>
                             <PlateIcon/><p>{post.people}</p>
@@ -64,7 +65,7 @@ export const Blogposts = () => {
                             <p className="type">{post.type}</p>
                             <div className="aboute-food">
                             <h2>{post.title}</h2>
-                            <p>{post.shortDescription.slice(0, 305)}</p>
+                            <p className="card-short-description">{post.shortDescription.slice(0, 305)}</p>
                             <div className="info">
                             <TimeIcon/><p>{post.time}min</p>
                             <PlateIcon/><p>{post.people}</p>

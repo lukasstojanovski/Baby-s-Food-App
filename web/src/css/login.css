@@ -9,14 +9,15 @@
     color: #626262;
 }
 
-.login-form{
+.login-div{
     display: flex;
     justify-content: space-evenly;
     margin: 100px 0px;
 }
 
-form{
-    margin: 0px 90px;
+
+.login-form{
+    margin: 0px 50px;
 }
 
 .email-password{
@@ -43,10 +44,11 @@ input{
     border-radius: 5px;
     background-color: #96BB36;
     color: white;
-    width: 100px;
+    width: auto;
     height: 35px;
     display: flex;
     align-items: center;
+    padding: 20px;
 }
 
 .sign-in-button span{

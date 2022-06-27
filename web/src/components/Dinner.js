@@ -13,7 +13,7 @@ export const Dinner = () => {
 
     const getPosts = async () => {
         try {
-            let res = await fetch('/api/v1/blog', {
+            let res = await fetch('/api/v1/blog/all', {
                 method: 'GET'
             });
             let data = await res.json();

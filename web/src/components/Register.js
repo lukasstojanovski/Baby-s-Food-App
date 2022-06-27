@@ -8,14 +8,17 @@ export const Register = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
 
     const navigate = useNavigate()
 
     const submit = async (e) => {
-        let account = {name, email, password}
+        let account = {name, email, password, confirmPassword}
         console.log(account);
-
-        try{
+        if(password !== confirmPassword) {
+           alert('Please Confirm Password')
+        }else{ 
+            try{
             let result = await fetch('/api/v1/auth/register', {
                 method: 'POST',
                 body: JSON.stringify(account),
@@ -31,7 +34,7 @@ export const Register = () => {
             navigate('/')
         }catch (err) {
             alert(err)
-        }
+        }}
     }
 
     return(
@@ -39,7 +42,7 @@ export const Register = () => {
             <main>
            <Nav/>
            <h1>Create Account</h1>
-           <div className="login-form">
+           <div className="login-div">
                <div className="welcome-login">
                     <h4 className="welcome">Create your<h4 className="welcome-baby">account</h4></h4>
                     <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
@@ -48,7 +51,7 @@ export const Register = () => {
                          The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic 
                          words etc.</p>
                </div>
-            <form onSubmit={submit}>
+            <form className="login-form" onSubmit={submit}>
             <label>
                 <span className="email-password">Full Name:</span>
                 <input type='full_name' name='full_name' value={name} onChange={(e)=>{setName(e.target.value)}}/>
@@ -62,6 +65,11 @@ export const Register = () => {
             <label>
                 <span className="email-password">Password:</span>
                 <input type='password' name='password' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+            </label>
+            <br/>
+            <label>
+                <span className="email-password">Repeat Password:</span>
+                <input type='password' name='confirmPassword' value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}}/>
             </label>
             <br/>
             <button className="sign-in-button" type='submit'><span>Creat Account</span></button>
