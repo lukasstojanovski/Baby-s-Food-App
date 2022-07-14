@@ -40,7 +40,7 @@ const create = async (data) => {
 };
 
 const update = async (id, data) => {
-    return Posts.updateOne({_id: id}, data);
+    return Posts.findByIdAndUpdate(id, data);
 };
 
 const remove = async (id) => {

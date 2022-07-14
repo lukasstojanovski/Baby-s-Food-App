@@ -6,6 +6,7 @@ import {ReactComponent as TimeIcon} from "../photos/Archive (1)/icon_time.svg"
 export const Blogposts = () => {
     
     const [posts, setPosts] = useState([]);
+    const [image, setImage] = useState()
     const [show, setShow] = useState(false)
     const [selectedPost, setSelectedPost] = useState("")
 
@@ -14,7 +15,8 @@ export const Blogposts = () => {
             let res = await fetch('/api/v1/blog/all', {
                 method: 'GET',
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    authorization: `bearer ${localStorage.getItem("jwt")}`
                 }
             });
             let data = await res.json();
@@ -23,8 +25,12 @@ export const Blogposts = () => {
             setPosts(data);
         } catch (err) {
             console.log(err);
-        }
+        }   
+
+        console.log(posts)
+
     };
+
 
     useEffect(()=>{
         getPosts()
@@ -44,7 +50,7 @@ export const Blogposts = () => {
                     return(
                         <div onClick={()=>{setShow(true); setSelectedPost(post)}} className="recipe-card" key={post.id}>
                             
-                            <img className="food-img" src={post.photo} alt=""></img>
+                            <img className="food-img" src={`/api/v1/storage/${post.photo}`} alt=""></img>
                             <p className="type">{post.type}</p>
                             <div className="aboute-food">
                             <h2>{post.title}</h2>
@@ -61,7 +67,7 @@ export const Blogposts = () => {
                 {posts.map(post => {
                     return(
                         <div onClick={()=>{setShow(true); setSelectedPost(post)}} className="recipe-card" key={post.id}>
-                            <img className="food-img" src={post.photo} alt=""></img>
+                            <img className="food-img" src={`/api/v1/storage/${post.photo}`} alt=""></img>
                             <p className="type">{post.type}</p>
                             <div className="aboute-food">
                             <h2>{post.title}</h2>
@@ -83,7 +89,7 @@ export const Blogposts = () => {
                     <div className="hidden-card">
                         <p>
                             <h2 className="popup-title">{selectedPost.title}</h2>
-                            <img className="popup-img" src={selectedPost.photo} alt=""></img>
+                            <img className="popup-img" src={`/api/v1/storage/${selectedPost.photo}`} alt=""></img>
                             <h3>Best Served</h3>
                             <p className="best-served">{selectedPost.bestServed}</p>
                         </p>

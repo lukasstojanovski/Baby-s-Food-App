@@ -3,7 +3,6 @@ import { Nav } from "./Nav";
 import "../css/blogposts.css"
 import {ReactComponent as PlateIcon} from "../photos/Archive (1)/icon_plate.svg"
 import {ReactComponent as TimeIcon} from "../photos/Archive (1)/icon_plate.svg"
-import { useLocation } from "react-router-dom";
 import { Footer } from "./Footer";
 
 export const Breakfast = () => {
@@ -11,7 +10,6 @@ export const Breakfast = () => {
     const [posts, setPosts] = useState([]);
     const [show, setShow] = useState(false)
     const [selectedPost, setSelectedPost] = useState("")
-    const location = useLocation()
 
     const getPosts = async () => {
         try {
@@ -46,7 +44,7 @@ export const Breakfast = () => {
                     return(
                         <div onClick={()=>{setShow(true); setSelectedPost(post)}} className="recipe-card" key={post.id}>
                             
-                            <img className="food-img" src={post.photo} alt=""></img>
+                            <img className="food-img" src={`/api/v1/storage/${post.photo}`} alt=""></img>
                             <p className="type">{post.type}</p>
                             <div className="aboute-food">
                             <h2>{post.title}</h2>
@@ -68,7 +66,7 @@ export const Breakfast = () => {
                     <div className="hidden-card">
                         <p>
                             <h2 className="popup-title">{selectedPost.title}</h2>
-                            <img className="popup-img" src={selectedPost.photo} alt=""></img>
+                            <img className="popup-img" src={`/api/v1/storage/${selectedPost.photo}`} alt=""></img>
                             <h3>Best Served</h3>
                             <p className="best-served">{selectedPost.bestServed}</p>
                         </p>

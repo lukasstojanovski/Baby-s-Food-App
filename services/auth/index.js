@@ -25,6 +25,8 @@ api.post('/api/v1/auth/register', auth.register);
 api.get('/api/v1/auth/refresh-token', auth.refreshToken);
 api.post('/api/v1/auth/forgot-password', auth.forgotPassword);
 api.post('/api/v1/auth/reset-password', auth.resetPassword);
+api.patch('/api/v1/auth/update/me', auth.updateMe)
+api.patch('/api/v1/auth/update/:id', auth.updatePartial)
 
 api.use(function (err, req, res, next) {
     if(err.name === 'UnauthorizedError') {

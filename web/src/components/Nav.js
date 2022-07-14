@@ -47,7 +47,7 @@ export const Nav = () => {
             <ul className='logged-in-links'>
                 <div className='type-of-foods'>
                 <li><Link className='my-recipes' to='/my-recipes'>My recipes</Link></li>
-                <li><Link className='my-profile' to='/'>My profile</Link></li>
+                <li><Link className='my-profile' to='/my-profile'>My profile</Link></li>
                 <li onClick={removeToken}><Link className='log-out-btn' to='/login'>Log out</Link></li>
                 </div>
             </ul>

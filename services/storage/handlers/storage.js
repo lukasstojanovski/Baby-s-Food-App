@@ -11,7 +11,8 @@ const upload = async (req, res) => {
     if(!ALLOWED_FILETYPES.includes(req.files.document.mimetype)) {
         return res.status(400).send('Filetype not allowed');
     }
-    let userDir = `user_${req.user.id}`;
+    // let userDir = `user_${req.user.id}`;
+    let userDir = `user`;
     let userDirPath = `${__dirname}/../../../uploads/${userDir}`;
     if(!fs.existsSync(userDirPath)) {
         fs.mkdirSync(userDirPath);
@@ -27,7 +28,8 @@ const upload = async (req, res) => {
 };
 
 const download = async (req, res) => {
-    let userDir = `user_${req.user.id}`;
+    // let userDir = `user_${req.user.id}`;
+    let userDir = `user`;
     let userDirPath = `${__dirname}/../../../uploads/${userDir}`;
     let filePath = `${userDirPath}/${req.params.filename}`;
     if(!fs.existsSync(filePath)) {

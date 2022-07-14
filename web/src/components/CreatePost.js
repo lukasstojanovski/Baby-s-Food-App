@@ -1,54 +1,99 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 import { Link } from "react-router-dom";
 import {ReactComponent as ArrowBack} from '../photos/Archive (1)/icon_back_white.svg'
 import "../css/createPost.css"
+import { useNavigate } from "react-router-dom";
 
 export const CreatePost = () => {
 
+    const navigate = useNavigate()
+
     const [title, setTitle] = useState('')
-    const [photo, setPhoto] = useState('')
     const [content, setContent] = useState('')
+    const [photo, setPhoto] = useState('')
     const [type, setType] = useState('Breakfast')
     const [time, setTime] = useState('')
     const [people, setPeople] = useState('')
     const [shortDescription, setShortDescription] = useState('')
     const [bestServed, setBestServed] = useState('')
+    const [selectedFile, setSelectedFile] = useState()
+    const [isFileSelected, setIsFileSelected] = useState(false)
+    const [img, setImg] = useState()
 
-    const submit = async () => {
-        let data = {title, photo, content, type, time, people, shortDescription, bestServed}
-        fetch('/api/v1/blog/', {
+    const changeHandler = (event) => {
+        setSelectedFile(event.target.files[0])
+        setIsFileSelected(true)
+        const [file] = event.target.files
+        setImg(URL.createObjectURL(file))
+        }
+    
+
+    const submit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+                    
+                    formData.append('document', selectedFile)
+                    
+                    let res = await fetch('/api/v1/storage?key=document', 
+                    {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            authorization: `bearer ${localStorage.getItem("jwt")}`
+                            
+                        }
+                    }
+                    )
+                    let data = await res.json()
+                    console.log(data)
+                    setPhoto(data.file_name)
+        
+        
+            let recipe = {title, photo, content, type, time, people, shortDescription, bestServed}
+        let result = await fetch('/api/v1/blog/', {
             method: "POST",
-            body: JSON.stringify(data),
+            body: JSON.stringify(recipe),
             headers: {
                 'content-type': 'application/json',
                 'Accept': 'application/json',
                 authorization: `bearer ${localStorage.getItem("jwt")}`
             }
+            
         })
-        .then((resp => {
-            resp.json().then((result)=>{
-                console.log(result)
-            })
-        }))
+        if(!result.ok){   
+            throw "Error Creating a post"
+        }
+            let resp = result.json()
+            console.log(resp)
+            navigate("/my-recipes")
     }
-    
+
     return(
         <div>
             <main>
                 <Nav/>
                 <div className="add-post">
-                <h1>Create Post</h1>
+                <h1>Create Recipe</h1>
                 <button className="add-post-btn"><Link to='/my-recipes'><ArrowBack/></Link></button>
                 </div>
                 <form className="create-post-form" onSubmit={submit}>
                     <div className="link-img">
 
-                <label >
-                        <span>Link of Recipe Image</span>
-                        <input type='photo' name='photo' onChange={(e)=>{setPhoto(e.target.value)}}/>
+                <label className="img-label">
+                        <span>Recipe Image</span>
+                        <img className="selected-img" src={img} alt=""/>
+                        <label className="choose-file-button">
+                            <span className="select-img-span">Select Image</span>
+                        <input className="choose-img" type='file' name='file' onChange={changeHandler}/>
+                        </label>
                     </label>
+
+                    {/* <label className="hidden">
+                        <input type="text" name="photo" value={photo}/>
+                    </label> */}
+                        
                     </div>
         
                     <div className="middle-container">

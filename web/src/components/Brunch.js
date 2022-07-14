@@ -44,7 +44,7 @@ export const Brunch = () => {
                     return(
                         <div onClick={()=>{setShow(true); setSelectedPost(post)}} className="recipe-card" key={post.id}>
                             
-                            <img className="food-img" src={post.photo} alt=""></img>
+                            <img className="food-img" src={`/api/v1/storage/${post.photo}`} alt=""></img>
                             <p className="type">{post.type}</p>
                             <div className="aboute-food">
                             <h2>{post.title}</h2>
@@ -66,7 +66,7 @@ export const Brunch = () => {
                     <div className="hidden-card">
                         <p>
                             <h2 className="popup-title">{selectedPost.title}</h2>
-                            <img className="popup-img" src={selectedPost.photo} alt=""></img>
+                            <img className="popup-img" src={`/api/v1/storage/${selectedPost.photo}`} alt=""></img>
                             <h3>Best Served</h3>
                             <p className="best-served">{selectedPost.bestServed}</p>
                         </p>

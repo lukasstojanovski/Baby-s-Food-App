@@ -90,7 +90,7 @@ p{
     right: 0px;
     bottom: 0px;
     position: fixed;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,8 +99,11 @@ p{
 .hidden-card{
     display: flex;
     height: auto;
+    max-height: 600px;
     width: auto;
     background-color: white;
+    border-radius: 30px;
+    overflow: scroll;
 }
 
 .hidden-card p{

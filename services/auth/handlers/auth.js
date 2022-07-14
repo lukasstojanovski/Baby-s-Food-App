@@ -1,7 +1,8 @@
 const { 
     validate, 
     Account,
-    AccountLogin
+    AccountLogin,
+    AccountUpdate
 } = require('../../../pkg/account/validate');
 const account = require('../../../pkg/account');
 const bcrypt = require('bcryptjs');
@@ -57,6 +58,38 @@ const register = async (req, res) => {
     }
 };
 
+const updatePartial = async (req, res) => {
+    try {
+        await validate(req.body, AccountUpdate);
+        req.body.password = bcrypt.hashSync(req.body.password)
+        let data = {
+            ...req.body,
+            id: req._id
+        };
+        let acc = await account.update(req.params.id, data);
+        return res.status(204).send(acc);
+    } catch (err) {
+        console.log(err);
+        return res.status(err.code).send(err.error);
+    }
+};
+
+const updateMe = async (req, res) => {
+    try {
+        await validate(req.body, AccountUpdate);
+        req.body.password = bcrypt.hashSync(req.body.password)
+        let data = {
+            ...req.body,
+            id: req.user.id
+        };
+        let acc = await account.update(req.user.id, data);
+        return res.status(204).send(acc);
+    } catch (err) {
+        console.log(err);
+        return res.status(err.code).send(err.error);
+    }
+};
+
 const refreshToken = async (req, res) => {
     let payload = {
         ...req.user,
@@ -65,6 +98,7 @@ const refreshToken = async (req, res) => {
     let token = jwt.sign(payload, config.get('security').jwt_key);
     return res.send({token});
 };
+
 
 const forgotPassword = async (req, res) => {
     return res.send('OK');
@@ -79,5 +113,7 @@ module.exports = {
     register,
     refreshToken,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    updatePartial,
+    updateMe
 };

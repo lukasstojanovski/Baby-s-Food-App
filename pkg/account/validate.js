@@ -11,6 +11,12 @@ const AccountLogin = {
     password: 'required|string'
 };
 
+const AccountUpdate = {
+    email: 'string',
+    password: 'string',
+    name: 'string'
+}
+
 const validate = async (data, schema) => {
     let v = new Validator(data, schema); // this is where the validation is set up
     let e = await v.check(); // this is where the validation hapens
@@ -25,5 +31,6 @@ const validate = async (data, schema) => {
 module.exports = {
     Account,
     AccountLogin,
+    AccountUpdate,
     validate
 };

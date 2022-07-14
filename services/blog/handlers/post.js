@@ -85,7 +85,7 @@ const updatePartial = async (req, res) => {
         return res.status(204).send('');
     } catch (err) {
         console.log(err);
-        return res.status(err.code).send(err.error);
+        return res.status(500).send(err.error);
     }
 };
 
