@@ -14,8 +14,8 @@ export const Myrecipes = () => {
     const [postId, setPostId] = useState("")
     const [isPostSelected, setIsPostSelected] = useState(false)
     const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
     const [photo, setPhoto] = useState('')
+    const [content, setContent] = useState('')
     const [type, setType] = useState('Breakfast')
     const [time, setTime] = useState('')
     const [people, setPeople] = useState('')
@@ -36,30 +36,6 @@ export const Myrecipes = () => {
         const [file] = event.target.files
         setImg(URL.createObjectURL(file))
     }
-
-    const submit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-
-        formData.append('document', selectedFile)
-
-        await fetch('/api/v1/storage?key=document', 
-        {
-            method: 'POST',
-            body: formData,
-            headers: {
-                authorization: `bearer ${localStorage.getItem("jwt")}`
-
-            }
-        }
-        )
-        .then((response) => response.json())
-        .then((result) => {
-            setPhoto(result.file_name)
-        })
-        .catch((error) => {
-            console.log("Error: ", error)
-        })}
     
     async function deletePost(id) {
         let res = await fetch('/api/v1/blog/'+id, {
@@ -101,6 +77,22 @@ export const Myrecipes = () => {
     };
 
     const updatePost = async (id) => {
+        // const formData = new FormData();
+
+        // formData.append('document', selectedFile)
+
+        // let result = await fetch('/api/v1/storage?key=document', 
+        // {
+        //     method: 'POST',
+        //     body: formData,
+        //     headers: {
+        //         authorization: `bearer ${localStorage.getItem("jwt")}`
+
+        //     }
+        // }
+        // )
+        // let info = await result.json()
+        // let photo = info.file_name
 
         let recipe = {title, content, photo, type, time, people, shortDescription, bestServed }
         console.log(recipe)
@@ -146,7 +138,9 @@ export const Myrecipes = () => {
 
                 <label className="img-label">
                         <span>Recipe Image</span>
-                        <img className="selected-img" src={`/api/v1/storage/${photo}`} alt=""/>
+                        {isFileSelected ? 
+                        <img className="selected-img" src={img} alt=""/> :
+                        <img className="selected-img" src={`/api/v1/storage/${photo}`} alt=""/>}
                         <label className="choose-file-button">
                             <span className="select-img-span">Select Image</span>
                         <input className="choose-img" type='file' name='file' onChange={changeHandler}/>
@@ -249,4 +243,4 @@ export const Myrecipes = () => {
         <Footer/>
         </div>
     )
-}
+    }

@@ -33,6 +33,7 @@ h1::after{
 
 h2{
     color: #F0972A;
+    height: 55px;
 }
 
 p{
@@ -100,7 +101,7 @@ p{
     display: flex;
     height: auto;
     max-height: 600px;
-    width: auto;
+    width: 850px;
     background-color: white;
     border-radius: 30px;
     overflow: scroll;

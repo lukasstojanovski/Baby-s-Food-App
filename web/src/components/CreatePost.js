@@ -12,7 +12,7 @@ export const CreatePost = () => {
 
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-    const [photo, setPhoto] = useState('')
+    // const [photo, setPhoto] = useState('')
     const [type, setType] = useState('Breakfast')
     const [time, setTime] = useState('')
     const [people, setPeople] = useState('')
@@ -27,11 +27,13 @@ export const CreatePost = () => {
         setIsFileSelected(true)
         const [file] = event.target.files
         setImg(URL.createObjectURL(file))
+        
         }
     
 
     const submit = async (e) => {
         e.preventDefault();
+        
         const formData = new FormData();
                     
                     formData.append('document', selectedFile)
@@ -47,10 +49,8 @@ export const CreatePost = () => {
                     }
                     )
                     let data = await res.json()
-                    console.log(data)
-                    setPhoto(data.file_name)
-        
-        
+                    let photo = data.file_name
+                    
             let recipe = {title, photo, content, type, time, people, shortDescription, bestServed}
         let result = await fetch('/api/v1/blog/', {
             method: "POST",
@@ -62,9 +62,6 @@ export const CreatePost = () => {
             }
             
         })
-        if(!result.ok){   
-            throw "Error Creating a post"
-        }
             let resp = result.json()
             console.log(resp)
             navigate("/my-recipes")

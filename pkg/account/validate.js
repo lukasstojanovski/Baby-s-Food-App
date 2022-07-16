@@ -3,7 +3,10 @@ const { Validator } = require('node-input-validator');
 const Account = {
     email: 'required|string',
     password: 'required|string',
-    name: 'required|string',
+    firstName: 'required|string',
+    lastName: 'required|string',
+    birthDate: 'required|string',
+    avatar: 'string'
 };
 
 const AccountLogin = {
@@ -12,9 +15,12 @@ const AccountLogin = {
 };
 
 const AccountUpdate = {
-    email: 'string',
-    password: 'string',
-    name: 'string'
+    email: 'required|string',
+    password: 'required|string',
+    firstName: 'required|string',
+    lastName: 'required|string',
+    birthDate: 'required|string',
+    avatar:'string'
 }
 
 const validate = async (data, schema) => {

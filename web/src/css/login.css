@@ -16,8 +16,18 @@
 }
 
 
+.register-form{
+    margin: 0px 50px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 420px;
+    gap: 5px;
+}
+
 .login-form{
     margin: 0px 50px;
+    width: 200px;
 }
 
 .email-password{
@@ -25,8 +35,14 @@
     color: #F0972A;
 }
 
+.email-password-input{
+    font-weight: 700;
+    color: #F0972A;
+    width: 250px;
+}
+
 input{
-    width: 300px;
+    width: 200px;
     height: 35px;
     border-color: #A5A5A5;
     border-width: 1px;
@@ -55,4 +71,17 @@ input{
     margin: 20px auto;
     font-weight: bold;
 }
+.login-label{
+    width: 400px;
+    height: 100px;
+}
+
+.register-label{
+    width: 200px;
+}
+
+.welcome-login{
+    width: 500px;
+}
+
 

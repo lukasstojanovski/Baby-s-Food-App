@@ -5,15 +5,18 @@ import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
 
-    const [name, setName] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [birthDate, setBirthDate] = useState('')
 
     const navigate = useNavigate()
 
     const submit = async (e) => {
-        let account = {name, email, password, confirmPassword}
+        e.preventDefault();
+        let account = {firstName, lastName, email, password, confirmPassword, birthDate}
         console.log(account);
         if(password !== confirmPassword) {
            alert('Please Confirm Password')
@@ -31,7 +34,7 @@ export const Register = () => {
             }
             result = await result.json()
             localStorage.setItem("user-info", result)
-            navigate('/')
+            navigate('/login')
         }catch (err) {
             alert(err)
         }}
@@ -51,27 +54,38 @@ export const Register = () => {
                          The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic 
                          words etc.</p>
                </div>
-            <form className="login-form" onSubmit={submit}>
-            <label>
-                <span className="email-password">Full Name:</span>
-                <input type='full_name' name='full_name' value={name} onChange={(e)=>{setName(e.target.value)}}/>
+            <form className="register-form" onSubmit={submit}>
+            <label className="register-label">
+                <span className="email-password">First Name:</span>
+                <input type='text' name='first_name' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}/>
             </label>
-            <br/>
-            <label>
+            
+            <label className="register-label">
+                <span className="email-password">Last Name:</span>
+                <input type='text' name='last_name' value={lastName} onChange={(e)=>{setLastName(e.target.value)}}/>
+            </label>
+            
+            <label className="register-label">
                 <span className="email-password">E-mail:</span>
                 <input type='email' name='email' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
             </label>
-            <br/>
-            <label>
+            
+            <label className="register-label">
+                <span className="email-password">Birthday:</span>
+                <input type='date' name='birth_date' value={birthDate} onChange={(e)=>{setBirthDate(e.target.value)}}/>
+            </label>
+
+            <label className="register-label">
                 <span className="email-password">Password:</span>
                 <input type='password' name='password' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
             </label>
-            <br/>
-            <label>
+            
+            <label className="register-label">
                 <span className="email-password">Repeat Password:</span>
                 <input type='password' name='confirmPassword' value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}}/>
             </label>
-            <br/>
+            
+            
             <button className="sign-in-button" type='submit'><span>Creat Account</span></button>
 
             </form>

@@ -48,7 +48,7 @@ export const Dinner = () => {
                             <p className="type">{post.type}</p>
                             <div className="aboute-food">
                             <h2>{post.title}</h2>
-                            <p>{post.content.slice(0, 344)}</p>
+                            <p>{post.shortDescription.slice(0, 305)}</p>
                             <div className="info">
                             <TimeIcon/><p>{post.time}min</p>
                             <PlateIcon/><p>{post.people}</p>

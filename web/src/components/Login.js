@@ -62,16 +62,16 @@ export const Login = () => {
                 </div>
 
                 <form className="login-form" onSubmit={submit}>
-                    <label>
+                    <label className="login-label">
                         <span className="email-password">Email</span>
                         <input className="email-password-input" type="email" name="email" value={formData.email} onChange={inputChange} />
                     </label>
-                    <br />
-                    <label>
+                    <br/>
+                    <label className="login-label">
                         <span className="email-password">Password</span>
                         <input className="email-password-input" type="password" name="password" value={formData.password} onChange={inputChange} />
                     </label>
-                    <br />
+                    <br/>
                     <button className="sign-in-button" type="submit"><span>LOG IN</span></button>
                 </form>
 
