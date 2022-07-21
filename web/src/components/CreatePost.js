@@ -69,8 +69,8 @@ export const CreatePost = () => {
 
     return(
         <div>
-            <main>
                 <Nav/>
+            <main>
                 <div className="add-post">
                 <h1>Create Recipe</h1>
                 <button className="add-post-btn"><Link to='/my-recipes'><ArrowBack/></Link></button>

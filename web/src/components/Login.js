@@ -32,9 +32,11 @@ export const Login = () => {
             }
             let data = await res.json();
             localStorage.setItem('jwt', data.token);
+            localStorage.setItem('email', formData.email)
+            localStorage.setItem('email', formData.password)
             navigate('/')
         } catch (err) {
-            alert(err);
+            alert("Wrong Password");
         }
     };
 

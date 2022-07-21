@@ -11,6 +11,7 @@ import { Nav } from "./components/Nav";
 import { Myrecipes } from "./components/Myrecipes";
 import { CreatePost } from "./components/CreatePost";
 import { MyProfile } from "./components/MyProfile";
+import { UpdateRecipe } from "./components/UpdateRecipe";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -28,6 +29,7 @@ root.render(
         <Route path="/my-recipes" element={<Myrecipes/>}/>
         <Route path="/create-post" element={<CreatePost/>}/>
         <Route path="/my-profile" element={<MyProfile/>}/>
+        <Route path="/my-recipes/:id" element={<UpdateRecipe/>}/>
         
     </Routes>
   </Router>

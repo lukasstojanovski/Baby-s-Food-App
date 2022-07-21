@@ -77,7 +77,6 @@ const updatePartial = async (req, res) => {
 const updateMe = async (req, res) => {
     try {
         await validate(req.body, AccountUpdate);
-        req.body.password = bcrypt.hashSync(req.body.password)
         let data = {
             ...req.body,
             id: req.user.id
@@ -99,6 +98,22 @@ const refreshToken = async (req, res) => {
     return res.send({token});
 };
 
+const getAcc = async (req, res) => {
+    try {
+        let acc = await account.getByEmail(req.user.email);
+        if(!acc) {
+            throw {
+                code: 404,
+                error: 'Account not found'
+            }
+        }
+        return res.send(acc);
+    } catch (err) {
+        console.log(err);
+        return res.status(err.code).send(err.error);
+    }
+};
+
 
 const forgotPassword = async (req, res) => {
     return res.send('OK');
@@ -109,6 +124,7 @@ const resetPassword = async (req, res) => {
 };
 
 module.exports = {
+    getAcc,
     login,
     register,
     refreshToken,

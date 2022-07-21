@@ -33,17 +33,18 @@ export const Register = () => {
                 throw 'Error Signing in'
             }
             result = await result.json()
-            localStorage.setItem("user-info", result)
+            localStorage.setItem("email", result.email)
+            console.log(result)
             navigate('/login')
         }catch (err) {
-            alert(err)
+            alert("All fields are mandatory")
         }}
     }
 
     return(
         <div>
-            <main>
            <Nav/>
+            <main>
            <h1>Create Account</h1>
            <div className="login-div">
                <div className="welcome-login">
@@ -57,17 +58,17 @@ export const Register = () => {
             <form className="register-form" onSubmit={submit}>
             <label className="register-label">
                 <span className="email-password">First Name:</span>
-                <input type='text' name='first_name' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}/>
+                <input type='text' name='first_name' placeholder="First Name" value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}/>
             </label>
             
             <label className="register-label">
                 <span className="email-password">Last Name:</span>
-                <input type='text' name='last_name' value={lastName} onChange={(e)=>{setLastName(e.target.value)}}/>
+                <input type='text' name='last_name' placeholder="Last Name" value={lastName} onChange={(e)=>{setLastName(e.target.value)}}/>
             </label>
             
             <label className="register-label">
                 <span className="email-password">E-mail:</span>
-                <input type='email' name='email' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+                <input type='email' name='email' placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
             </label>
             
             <label className="register-label">
@@ -77,12 +78,12 @@ export const Register = () => {
 
             <label className="register-label">
                 <span className="email-password">Password:</span>
-                <input type='password' name='password' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+                <input type='password' name='password' placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
             </label>
             
             <label className="register-label">
                 <span className="email-password">Repeat Password:</span>
-                <input type='password' name='confirmPassword' value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}}/>
+                <input type='password' name='confirmPassword' placeholder="Repeat Password" value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}}/>
             </label>
             
             

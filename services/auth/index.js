@@ -20,6 +20,7 @@ api.use(jwt({
     ]
 }));
 
+api.get('/api/v1/auth/:email', auth.getAcc);
 api.post('/api/v1/auth/login', auth.login);
 api.post('/api/v1/auth/register', auth.register);
 api.get('/api/v1/auth/refresh-token', auth.refreshToken);

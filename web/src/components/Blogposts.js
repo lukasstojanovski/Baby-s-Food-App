@@ -2,6 +2,8 @@ import React, { useState,useEffect } from "react";
 import "../css/blogposts.css"
 import {ReactComponent as PlateIcon} from "../photos/Archive (1)/icon_plate.svg"
 import {ReactComponent as TimeIcon} from "../photos/Archive (1)/icon_time.svg"
+import {ReactComponent as ArrowsIcon} from "../photos/Archive (1)/icon_arrows_white.svg"
+import {ReactComponent as StarIcon} from "../photos/Archive (1)/icon_star.svg"
 
 export const Blogposts = () => {
     
@@ -56,8 +58,12 @@ export const Blogposts = () => {
                             <h2>{post.title}</h2>
                             <p className="card-short-description">{post.shortDescription.slice(0, 305)}</p>
                             <div className="info">
+                            <div className="time-people-like">
                             <TimeIcon/><p>{post.time}min</p>
                             <PlateIcon/><p>{post.people}</p>
+                            <StarIcon/><p>0</p>
+                            </div>
+                            <div className="arrows"><ArrowsIcon/></div>
                             </div>
                             </div>
                         </div>
@@ -73,8 +79,12 @@ export const Blogposts = () => {
                             <h2>{post.title}</h2>
                             <p className="card-short-description">{post.shortDescription.slice(0, 305)}</p>
                             <div className="info">
+                            <div className="time-people-like">
                             <TimeIcon/><p>{post.time}min</p>
                             <PlateIcon/><p>{post.people}</p>
+                            <StarIcon/><p>0</p>
+                            </div>
+                            <div className="arrows"><ArrowsIcon/></div>
                             </div>
                             </div>
                         </div>

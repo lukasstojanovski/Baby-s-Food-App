@@ -43,6 +43,6 @@ li:last-child::after{
     color: aliceblue;
 }
 
-/* .footer ul{
-    margin: 0px;
-} */
+.footer-food-links:-webkit-any-link {
+    text-decoration: none;
+}

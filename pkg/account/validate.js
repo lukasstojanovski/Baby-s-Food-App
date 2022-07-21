@@ -16,7 +16,6 @@ const AccountLogin = {
 
 const AccountUpdate = {
     email: 'required|string',
-    password: 'required|string',
     firstName: 'required|string',
     lastName: 'required|string',
     birthDate: 'required|string',
