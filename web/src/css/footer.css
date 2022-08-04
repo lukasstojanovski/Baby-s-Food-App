@@ -46,3 +46,15 @@ li:last-child::after{
 .footer-food-links:-webkit-any-link {
     text-decoration: none;
 }
+
+@media screen and (max-width: 600px){
+    .footer span{
+        font-size: 8px;
+        width: 115px;
+        margin-right: 200px;
+        color: aliceblue;
+    }
+    .footer-food-links{
+        font-size: 11px;
+    }
+}

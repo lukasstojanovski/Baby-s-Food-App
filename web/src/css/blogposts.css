@@ -9,6 +9,9 @@ body{
     background-color: #F8F7F2;
 }
 
+
+
+
 main{
     margin: 50px 200px;
     margin-bottom: 150px;
@@ -189,8 +192,87 @@ h3{
     float: right;
     border-radius: 5px;
     position: relative;
+    cursor: pointer;
     
     
+}
+
+@media screen and (max-width: 600px){
+    main{
+        width: 100%;
+        margin: auto;
+        padding: 10px;
+    }
+    h1{
+        font-size: 20px;
+        height: auto;
+        margin: 20px 0px;
+    }
+    .recipe-card{
+        width: auto;
+        height: auto;
+        border-radius: 10px;
+        margin: 10px 20px;
+     }
+    .grid-container{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .food-img{
+        width: 100%;
+        height: 200px;
+    }
+    .type{
+        position: relative;
+        display: inline-block;
+        top: -190px;
+        background-color: #96BB36;
+        border-radius: 15px;
+        color: white;
+        font-size: 15px;
+        padding: 10px 10px;
+    }
+    h2{
+        color: #F0972A;
+        height: auto;
+        font-size: 20px;
+    }
+    .card-short-description{
+        height: auto;
+        font-size: 15px;
+    }
+    .info{
+        display: flex;
+        width: 100%;
+        height: auto;
+        font-size: 20px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    svg{
+        width: 20px;
+        height: auto;
+    }
+    .arrows{
+        width: 25px;
+        height: 25px;
+        background-color: #96BB36;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        float: right;
+        border-radius: 5px;
+        position: relative;
+        cursor: pointer;
+        
+        
+    }
+        .aboute-food{
+            gap: 5px;
+        }
+
 }
 
 

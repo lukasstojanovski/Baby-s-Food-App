@@ -34,7 +34,7 @@ export const Login = () => {
             localStorage.setItem('jwt', data.token);
             localStorage.setItem('email', formData.email)
             localStorage.setItem('email', formData.password)
-            navigate('/')
+            navigate('/my-profile')
         } catch (err) {
             alert("Wrong Password");
         }
