@@ -1,7 +1,7 @@
 {
     "services": {
-        "blog": {"port": 10001},
         "proxy": {"port": 10000},
+        "blog": {"port": 10001},
         "auth": {"port": 10002},
         "storage": {"port": 10003}
     },

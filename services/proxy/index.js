@@ -29,17 +29,18 @@ app.use(
     )
 );
 
-app.use(
-    '/',
-    proxy(
-        'http://127.0.0.1:3000',
-        {proxyReqPathResolver: (req) => `http://127.0.0.1:3000${req.url}`}
-    )
-);
 // app.use(
 //     '/',
-//     express.static(path.join(__dirname, '/../../web/buid'))
+//     proxy(
+//         'http://127.0.0.1:3000',
+//         {proxyReqPathResolver: (req) => `http://127.0.0.1:3000${req.url}`}
+//     )
 // );
+
+app.use(
+    '/', 
+    express.static(path.join(__dirname, '/../../web/build'))
+);
 
 
 
