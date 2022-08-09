@@ -88,7 +88,6 @@ export const UpdateRecipe = () => {
             })
             
             let data = await res.json()
-            console.log(data)
         }
 
     const updateOnlyPost = async (id) => {
@@ -104,7 +103,6 @@ export const UpdateRecipe = () => {
             })
             
             let data = await res.json()
-            console.log(data)
         }
 
     return(
@@ -175,7 +173,7 @@ export const UpdateRecipe = () => {
                     
                     {isFileSelected ? 
                     <button className="sign-in-button" onClick={()=>{updatePostAndPhoto(id)}}><span className="button-span">SAVE</span></button> :
-                    <button className="sign-in-button" onClick={()=>{updateOnlyPost(id)}}><span className="button-span">SAVE</span></button> 
+                    <button className="sign-in-button" onClick={()=>{updateOnlyPost(id);}}><span className="button-span">SAVE</span></button> 
 
                     }   
                     </div>
