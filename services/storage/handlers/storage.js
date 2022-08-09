@@ -1,3 +1,4 @@
+const { json } = require('express/lib/response');
 const fs = require('fs');
 const strings = require('../../../pkg/strings');
 
@@ -38,7 +39,25 @@ const download = async (req, res) => {
     res.download(filePath);
 };
 
+const remove = async (req, res) => {
+    let userDir = `user`;
+    let userDirPath = `${__dirname}/../../../uploads/${userDir}`;
+    let filePath = `${userDirPath}/${req.params.filename}`;
+    if(fs.existsSync(filePath)) {
+        try{
+            fs.unlinkSync(filePath) 
+            return res.status(200).send("File Deleted")
+        } catch(err) {
+            console.log(err)
+        }
+    }
+    else{ 
+        return res.status(404).send("file not found") 
+    }
+}
+
 module.exports = {
     upload,
-    download
+    download,
+    remove
 }

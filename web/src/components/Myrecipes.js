@@ -7,10 +7,11 @@ import { Footer } from "./Footer";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+
 export const Myrecipes = () => {
-
+    
     const navigate = useNavigate()
-
+    
     const [posts, setPosts] = useState([])
     const [title, setTitle] = useState('')
     const [photo, setPhoto] = useState('')
@@ -20,7 +21,7 @@ export const Myrecipes = () => {
     const [people, setPeople] = useState('')
     const [shortDescription, setShortDescription] = useState('')
     const [bestServed, setBestServed] = useState('')
-
+    
     
     useEffect(()=>{
         getPosts()
@@ -37,6 +38,16 @@ export const Myrecipes = () => {
         res = await res.json()
         getPosts();
         console.log(res)
+    }
+
+    const deleteImg = async (filename) => {
+        let res = await fetch("/api/v1/storage/"+filename, {
+            method: "DELETE",
+            headers: {
+                'content-type': 'application/json',
+                'Accept': 'application/json',
+                authorization: `bearer ${localStorage.getItem("jwt")}`}
+        })
     }
     
     const getPosts = async () => {
@@ -84,7 +95,7 @@ export const Myrecipes = () => {
                         <td><span>{post.title}</span></td>
                         <td><span className="category">{post.type}</span></td>
                         <td><span>{post.publishDate}</span></td>
-                        <td><button className="delete-btn" onClick={()=>{deletePost(post._id); window.location.reload()}}><IconTrashcan/></button></td>
+                        <td><button className="delete-btn" onClick={()=>{deletePost(post._id); deleteImg(post.photo); window.location.reload()}}><IconTrashcan/></button></td>
                     </tr>
                         )
                     })
